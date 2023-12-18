@@ -55,4 +55,17 @@ public function update(Request $request, $id)
 
     return response()->json(['plant' => $plant], 200);
 }
+
+public function delete($id)
+{
+    $plant = Plant::find($id);
+
+    if (!$plant) {
+        return response()->json(['message' => 'Plant not found'], 404);
+    }
+
+    $plant->delete();
+
+    return response()->json(['message' => 'Plant deleted successfully'], 200);
+}
 }

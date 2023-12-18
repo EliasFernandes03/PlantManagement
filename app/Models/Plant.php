@@ -17,3 +17,4 @@ class Plant extends Model
      */
     protected $fillable = ['id', 'name', 'type', 'dificulty'];
 }
+

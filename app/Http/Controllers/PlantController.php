@@ -12,4 +12,14 @@ class PlantController extends Controller
         $plants = Plant::all();
         return response()->json(['plants' => $plants], 200);
     }
+    public function getOne($id)
+    {
+        $plant = Plant::find($id);
+    
+        if (!$plant) {
+            return response()->json(['message' => 'Plant not found'], 404);
+        }
+    
+        return response()->json(['plant' => $plant], 200);
+    }
 }

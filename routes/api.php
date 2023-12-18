@@ -21,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('/plant', [PlantController::class, 'index']);
+Route::get('/plant/{id}',[PlantController::class,'getOne']);

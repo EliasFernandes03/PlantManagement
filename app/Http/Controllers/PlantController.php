@@ -12,6 +12,7 @@ class PlantController extends Controller
         $plants = Plant::all();
         return response()->json(['plants' => $plants], 200);
     }
+
     public function getOne($id)
     {
         $plant = Plant::find($id);
@@ -22,4 +23,17 @@ class PlantController extends Controller
     
         return response()->json(['plant' => $plant], 200);
     }
+
+    public function create(Request $request)
+{
+    $validatedData = $request->validate([
+        'name' => 'required|string',
+        'type' => 'required|string',
+        'difficulty' => 'required|string',
+    ]);
+
+    $plant = Plant::create($validatedData);
+
+    return response()->json(['plant' => $plant], 201);
+}
 }

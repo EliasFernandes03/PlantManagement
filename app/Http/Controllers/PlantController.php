@@ -36,4 +36,23 @@ class PlantController extends Controller
 
     return response()->json(['plant' => $plant], 201);
 }
+public function update(Request $request, $id)
+{
+    $plant = Plant::find($id);
+
+    if (!$plant) {
+        return response()->json(['message' => 'Plant not found'], 404);
+    }
+
+    $validatedData = $request->validate([
+        'name' => 'string',
+        'type' => 'string',
+        'difficulty' => 'string',
+    ]);
+
+    $plant->fill($validatedData);
+    $plant->save();
+
+    return response()->json(['plant' => $plant], 200);
+}
 }

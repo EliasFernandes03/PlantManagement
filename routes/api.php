@@ -23,3 +23,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/plant', [PlantController::class, 'index']);
 Route::get('/plant/{id}',[PlantController::class,'getOne']);
 Route::post('/plant',[PlantController::class,'create']);
+Route::put('/plant/{id}',[PlantController::class,'update']);
